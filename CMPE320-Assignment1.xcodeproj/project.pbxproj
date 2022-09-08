@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InsultsSource.txt; sourceTree = "<group>"; };
 		05F8B93228CA23E100D6D57C /* CMPE320-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CMPE320-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F8B93528CA23E100D6D57C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				05F8B93528CA23E100D6D57C /* main.cpp */,
+				05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */,
 			);
 			path = "CMPE320-Assignment1";
 			sourceTree = "<group>";
