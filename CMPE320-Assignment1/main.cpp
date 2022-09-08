@@ -16,6 +16,14 @@ string in1[50];
 string in2[50];
 string in3[50];
 
+void generateRandom (long x0, long a, int b ,int m, int n) {
+  int r[n];
+  for(int i = 0;i < n; i++) {
+    x0 = (a * x0 + b) % m;
+  }
+  
+}
+
 void initialize() {
   ifstream myFile;
   myFile.open("./InsultsSource.txt");
