@@ -16,9 +16,10 @@ using namespace std;
 #include <string>
 
 class FileException:public exception {
-  const char * what() const throw() {
-    return "File not found!";
-  }
+  public:
+    const char * what() const throw() {
+      return "File not found!";
+    }
 };
 
 #endif /* insultgenerator_19es25_h */
