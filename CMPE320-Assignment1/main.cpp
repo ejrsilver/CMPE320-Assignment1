@@ -17,9 +17,10 @@ string in2[50];
 string in3[50];
 
 void generateRandom (long x0, long a, int b ,int m, int n) {
-  int r[n];
+  long r[n];
   for(int i = 0;i < n; i++) {
     x0 = (a * x0 + b) % m;
+    r[i] = x0;
   }
   
 }
@@ -44,6 +45,10 @@ void initialize() {
   else {
     throw system_error(error_code(), "File not found");
   }
+  /*
+  cout << (112457 - 112457%(50*50))/(50*50) << endl;
+  cout << (112457%(50*50) - 112457%50)/50 << endl;
+  cout << 112457%50 << endl;*/
 }
 
 int main(int argc, const char * argv[]) {
