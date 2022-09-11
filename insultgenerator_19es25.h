@@ -25,7 +25,7 @@ class FileException:public exception {
 class NumInsultsOutOfBounds:public exception {
   public:
     const char * what() const throw() {
-      return "File not found!";
+      return "The number of insults cannot be greater than 10000 or less than 1";
     }
 };
 
