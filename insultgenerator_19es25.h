@@ -13,7 +13,8 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
-#include <string>
+#include <string.h>
+#include <vector>
 
 class FileException:public exception {
   public:
@@ -35,20 +36,7 @@ class InsultGenerator {
     const char * what() const throw() {
       return "File not found!";
     }
-private:
-  string in1[50];
-  string in2[50];
-  string in3[50];
-  long * generateRandom (long x0, long a, int b ,int m, int n) {
-    long *r[n];
-    // Linear congurential generator for n inputs
-    for(int i = 0;i < n; i++) {
-      x0 = (a * x0 + b) % m;
-      *r[i] = x0;
-    }
-    return r[n];
-  }
-
+  
   void initialize() {
     ifstream myFile;
     myFile.open("./InsultsSource.txt");
@@ -70,6 +58,37 @@ private:
       throw system_error(error_code(), "File not found");
     }
   }
+  
+  string talkToMe() {
+    long res[100];
+    strcpy(res, *generateRandom(10, 15005, 8371, 19993, 100));
+    return "";
+  }
+  
+  vector<string> generate(int num) {
+    vector<string> voutput;
+    
+    return voutput;
+  }
+  
+// Gap between public and private members
+  
+private:
+  // Methodology for input selection: Finding near optimal parameters for Linear Congruential Pseudorandom Number Generators by means of Evolutionary Computation
+  string in1[50];
+  string in2[50];
+  string in3[50];
+  long * generateRandom (long x0, long a, int b ,int m, int n) {
+    long *r[n];
+    // Linear congurential generator for n inputs
+    for(int i = 0;i < n; i++) {
+      x0 = (a * x0 + b) % m;
+      *r[i] = x0;
+    }
+    return r[n];
+  }
+
+  
 };
 
 #endif /* insultgenerator_19es25_h */
