@@ -5,6 +5,8 @@
 //  Created by Ethan Silver on 2022-09-09.
 //
 
+/* THIS IS A TEST OF CONVERSION FROM A LOCAL REPO TO A GITHUB REPO*/
+
 using namespace std;
 
 #ifndef insultgenerator_19es25_h
@@ -57,6 +59,8 @@ class InsultGenerator {
     else {
       throw system_error(error_code(), "File not found");
     }
+    
+    myFile.close();
   }
   
   string talkToMe() {
