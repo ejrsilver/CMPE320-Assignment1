@@ -60,12 +60,6 @@ class InsultGenerator {
   }
   
   string talkToMe() {
-    long *p;
-    string s;
-    p = generateRandom(10, 15005, 8371, 19993, 100);
-    for(int x = 0; x < 100; x++) {
-      s += *(p + x) + "\n";
-    }
     return "";
   }
   
@@ -88,16 +82,6 @@ private:
   string in1[50];
   string in2[50];
   string in3[50];
-  long * generateRandom (long x0, long a, int b ,int m, int n) {
-    long *r[n];
-    // Linear congurential generator for n inputs
-    for(int i = 0;i < n; i++) {
-      x0 = (a * x0 + b) % m;
-      *r[i] = x0;
-    }
-    return r[n];
-  }
-
   
 };
 
