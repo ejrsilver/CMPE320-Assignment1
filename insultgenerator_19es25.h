@@ -36,9 +36,6 @@ class NumInsultsOutOfBounds:public exception {
 class InsultGenerator {
   
   public:
-    const char * what() const throw() {
-      return "File not found!";
-    }
   
   void initialize() {
     ifstream myFile;
@@ -73,9 +70,24 @@ class InsultGenerator {
   }
   
   vector<string> generate(int num) {
-    vector<string> voutput;
-    
-    return voutput;
+    if(num >= 0 && num <= 10000) {
+      vector<string> voutput;
+      int ran[num];
+      for(int y = 0; y < num; y++) {
+        int x = generateRandom();
+        while(contains(ran, x, num)) {
+          x = generateRandom();
+        }
+        ran[y] = x;
+        int x1 = x%2500;
+        int x2 = x%50;
+        voutput.push_back(in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
+      }
+      return voutput;
+    }
+    else {
+      throw NumInsultsOutOfBounds();
+    }
   }
   
   vector<string> generateAndSave(string s, int num) {
@@ -91,6 +103,20 @@ private:
   string in2[50];
   string in3[50];
   
+  // Ensure results are unique. Algorithm is 20% faster when this method is removed.
+  bool contains(int  *arr, int i, int index) {
+    for(int x = 0; x < index; x++) {
+      if(*(arr + x) == i) {
+        return true;
+      }
+    }
+    return false;
+  }
+  // I need to ask the prof about this. This is 50% faster, but is NOT actually random.
+  int generateRandom() {
+    return rand()%125000;
+  }
+  /*
   int generateRandom() {
     // Get a random value (truly random, from hardware)
     random_device rd;
@@ -101,7 +127,7 @@ private:
     // Conform the randomly generated output to a uniform distribution. There are 50^3 valid results, for a range of [0,124999].
     uniform_int_distribution<> distr(0, 124999);
     return distr(gen);
-  }
+  }*/
 };
 
 #endif /* insultgenerator_19es25_h */
