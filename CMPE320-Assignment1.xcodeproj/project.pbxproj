@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		056ED64928CB935600A46EA1 /* TestInsultGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056ED64828CB935600A46EA1 /* TestInsultGenerator.cpp */; };
-		05F8B93628CA23E100D6D57C /* insultgenerator_19es25.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05F8B93528CA23E100D6D57C /* insultgenerator_19es25.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +27,6 @@
 		056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = insultgenerator_19es25.h; sourceTree = "<group>"; };
 		05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InsultsSource.txt; sourceTree = "<group>"; };
 		05F8B93228CA23E100D6D57C /* CMPE320-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CMPE320-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
-		05F8B93528CA23E100D6D57C /* insultgenerator_19es25.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = insultgenerator_19es25.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +60,6 @@
 		05F8B93428CA23E100D6D57C /* CMPE320-Assignment1 */ = {
 			isa = PBXGroup;
 			children = (
-				05F8B93528CA23E100D6D57C /* insultgenerator_19es25.cpp */,
 				056ED64828CB935600A46EA1 /* TestInsultGenerator.cpp */,
 				05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */,
 			);
@@ -127,7 +124,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				056ED64928CB935600A46EA1 /* TestInsultGenerator.cpp in Sources */,
-				05F8B93628CA23E100D6D57C /* insultgenerator_19es25.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

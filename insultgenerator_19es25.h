@@ -60,12 +60,22 @@ class InsultGenerator {
   }
   
   string talkToMe() {
-    long res[100];
-    strcpy(res, *generateRandom(10, 15005, 8371, 19993, 100));
+    long *p;
+    string s;
+    p = generateRandom(10, 15005, 8371, 19993, 100);
+    for(int x = 0; x < 100; x++) {
+      s += *(p + x) + "\n";
+    }
     return "";
   }
   
   vector<string> generate(int num) {
+    vector<string> voutput;
+    
+    return voutput;
+  }
+  
+  vector<string> generateAndSave(string s, int num) {
     vector<string> voutput;
     
     return voutput;
