@@ -15,8 +15,9 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
-#include <string.h>
+#include <string>
 #include <vector>
+#include <random>
 
 class FileException:public exception {
   public:
@@ -64,7 +65,11 @@ class InsultGenerator {
   }
   
   string talkToMe() {
-    return "";
+    string s = "";
+    int x = generateRandom();
+    s+= in1[(x-x%2500)/2500] + " " + in2[(x%2500 - x%50)/50] + " " + in3[x%50];
+    
+    return s;
   }
   
   vector<string> generate(int num) {
@@ -82,11 +87,21 @@ class InsultGenerator {
 // Gap between public and private members
   
 private:
-  // Methodology for input selection: Finding near optimal parameters for Linear Congruential Pseudorandom Number Generators by means of Evolutionary Computation
   string in1[50];
   string in2[50];
   string in3[50];
   
+  int generateRandom() {
+    // Get a random value (truly random, from hardware)
+    random_device rd;
+    
+    // Seed the 19937 state-size Mersenne Twister Engine. Not technically uniform, but closer than a Linear Congruential Generator and optimized for large sets. Starts with a random value from hardware.
+    mt19937 gen(rd());
+    
+    // Conform the randomly generated output to a uniform distribution. There are 50^3 valid results, for a range of [0,124999].
+    uniform_int_distribution<> distr(0, 124999);
+    return distr(gen);
+  }
 };
 
 #endif /* insultgenerator_19es25_h */
