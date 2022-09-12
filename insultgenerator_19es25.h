@@ -18,6 +18,7 @@ using namespace std;
 #include <string>
 #include <vector>
 #include <random>
+#include <time.h>
 
 class FileException:public exception {
   public:
@@ -59,6 +60,9 @@ class InsultGenerator {
     }
     
     myFile.close();
+    
+    // Generate a seed for rand. Only happens once, and is not random. However, by using the current time, the results are at least unique.
+    srand((unsigned int) time(NULL));
   }
   
   string talkToMe() {
@@ -91,9 +95,27 @@ class InsultGenerator {
   }
   
   vector<string> generateAndSave(string s, int num) {
-    vector<string> voutput;
-    
-    return voutput;
+    if(num >= 0 && num <= 10000) {
+      ofstream writeOut;
+      writeOut.open(s);
+      vector<string> voutput;
+      int ran[num];
+      for(int y = 0; y < num; y++) {
+        int x = generateRandom();
+        while(contains(ran, x, num)) {
+          x = generateRandom();
+        }
+        ran[y] = x;
+        int x1 = x%2500;
+        int x2 = x%50;
+        voutput.push_back(in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
+        writeOut << (in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]) <<endl;
+      }
+      return voutput;
+    }
+    else {
+      throw NumInsultsOutOfBounds();
+    }
   }
   
 // Gap between public and private members
@@ -103,7 +125,7 @@ private:
   string in2[50];
   string in3[50];
   
-  // Ensure results are unique. Algorithm is 20% faster when this method is removed.
+  // Ensure results are unique. Pure random algorithm is 20% faster when this method is removed. Semi-random algorithm is 36x faster when this method is removed, demonstrating how much less random it is.
   bool contains(int  *arr, int i, int index) {
     for(int x = 0; x < index; x++) {
       if(*(arr + x) == i) {
@@ -112,8 +134,9 @@ private:
     }
     return false;
   }
-  // I need to ask the prof about this. This is 50% faster, but is NOT actually random.
+  // I need to ask the prof about this. This is 50% faster, but is NOT actually random. It's random-like, but not a thorough solution
   int generateRandom() {
+    // Return a random value in the possibility range
     return rand()%125000;
   }
   /*
