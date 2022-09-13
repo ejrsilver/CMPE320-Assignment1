@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		056ED64928CB935600A46EA1 /* TestInsultGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 056ED64828CB935600A46EA1 /* TestInsultGenerator.cpp */; };
+		0591A04D28D0E646006EDF07 /* insultgenerator_19es25.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0591A04C28D0E646006EDF07 /* insultgenerator_19es25.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		056ED64828CB935600A46EA1 /* TestInsultGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestInsultGenerator.cpp; sourceTree = "<group>"; };
 		056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = insultgenerator_19es25.h; sourceTree = "<group>"; };
+		0591A04C28D0E646006EDF07 /* insultgenerator_19es25.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = insultgenerator_19es25.cpp; sourceTree = "<group>"; };
 		05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InsultsSource.txt; sourceTree = "<group>"; };
 		05F8B93228CA23E100D6D57C /* CMPE320-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CMPE320-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -43,6 +45,7 @@
 		05F8B92928CA23E100D6D57C = {
 			isa = PBXGroup;
 			children = (
+				0591A04C28D0E646006EDF07 /* insultgenerator_19es25.cpp */,
 				056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.h */,
 				05F8B93428CA23E100D6D57C /* CMPE320-Assignment1 */,
 				05F8B93328CA23E100D6D57C /* Products */,
@@ -93,7 +96,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					05F8B93128CA23E100D6D57C = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				056ED64928CB935600A46EA1 /* TestInsultGenerator.cpp in Sources */,
+				0591A04D28D0E646006EDF07 /* insultgenerator_19es25.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +167,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -221,6 +226,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -242,7 +248,9 @@
 		05F8B93A28CA23E100D6D57C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 33P7AWGWRA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -252,7 +260,9 @@
 		05F8B93B28CA23E100D6D57C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 33P7AWGWRA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
