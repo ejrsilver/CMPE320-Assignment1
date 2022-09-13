@@ -41,6 +41,7 @@ class InsultGenerator {
     // Seed the Mersenne Twister. Not technically uniform, but closer than a Linear Congruential Generator and optimized for large sets. Starts with a random value from hardware.
     gen.seed(rd());
     
+    // Open the input file. Hopefully your IDE allows custom working directories, because that's how I got this pathname to work.
     ifstream myFile;
     myFile.open("./InsultsSource.txt");
     string s = "";
@@ -49,8 +50,10 @@ class InsultGenerator {
     int x = 0;
     if(myFile.is_open()) {
       while(getline(myFile, s)) {
+        // Get the first word, then erase it so the next can be retrieved
         in1[x] = s.substr(0, s.find(delim));
         s.erase(0, s.find(delim) + delim.length());
+        
         in2[x] = s.substr(0, s.find(delim));
         s.erase(0, s.find(delim) + delim.length());
         in3[x] = s.substr(0, s.find(delim));
@@ -58,28 +61,24 @@ class InsultGenerator {
       }
     }
     else {
-      throw system_error(error_code(), "File not found");
+      throw FileException();
     }
-    
     myFile.close();
-    
-    /* This is for the technically faster but much less scalable solution
-    // Generate a seed for rand. Only happens once, and is not random. However, by using the current time, the results are at least unique.
-    srand(rd());
-     */
   }
   
+  // Generate and return a randomly generated insult
   string talkToMe() {
-    string s = "";
     int x = generateRandom();
-    s+= in1[(x-x%2500)/2500] + " " + in2[(x%2500 - x%50)/50] + " " + in3[x%50];
-    
-    return s;
+    return (in1[(x-x%2500)/2500] + " " + in2[(x%2500 - x%50)/50] + " " + in3[x%50]);
   }
   
+
   vector<string> generate(int num) {
     if(num >= 0 && num <= 10000) {
+      
       vector<string> voutput;
+      
+      // Random values are generated, compared against existing results to ensure unique outputs, then sorted.
       int ran[num];
       for(int y = 0; y < num; y++) {
         int x = generateRandom();
@@ -89,6 +88,8 @@ class InsultGenerator {
         ran[y] = x;
       }
       sort(ran, ran+num);
+      
+      // Integers from sorted array are decoded into indexes for the three arrays. Those indexes are used to write the insult to an output vector and output file.
       for(int i = 0; i < num; i++) {
         int x1 = ran[i]%2500;
         int x2 = ran[i]%50;
@@ -103,10 +104,16 @@ class InsultGenerator {
   
   vector<string> generateAndSave(string s, int num) {
     if(num >= 0 && num <= 10000) {
+      
+      // Open output file
       ofstream writeOut;
       writeOut.open(s);
+      
       vector<string> voutput;
+      
+      // Random values are generated, compared against existing results to ensure unique outputs, then sorted.
       int ran[num];
+      
       for(int y = 0; y < num; y++) {
         int x = generateRandom();
         while(contains(ran, x, num)) {
@@ -115,11 +122,14 @@ class InsultGenerator {
         ran[y] = x;
       }
       sort(ran, ran+num);
+      
+      // Integers from sorted array are decoded into indexes for the three arrays. Those indexes are used to write the insult to an output vector and output file.
       for(int i = 0; i < num; i++) {
         int x1 = ran[i]%2500;
         int x2 = ran[i]%50;
-        voutput.push_back(in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
-        writeOut << (in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]) <<endl;
+        string sout = in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2];
+        voutput.push_back(sout);
+        writeOut << (sout) <<endl;
       }
       return voutput;
     }
@@ -144,7 +154,7 @@ private:
   string in2[50];
   string in3[50];
   
-  // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time.
+  // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time. C++'s built-in find function was also slower on average.
   bool contains(int  *arr, int i, int index) {
     for(int x = 0; x < index; x++) {
       if(*(arr + x) == i) {
@@ -153,7 +163,8 @@ private:
     }
     return false;
   }
-
+  
+  // This random generator is slightly slower on average than the srand and rand functions, but produces a nearly uniform distribution of results. Since the goal is primarily to generate random values, and the performance difference was only ~2ms, the Mersenne won out.
   int generateRandom() {
     return distr(gen);
   }
