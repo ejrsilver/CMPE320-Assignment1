@@ -39,6 +39,9 @@ class InsultGenerator {
   public:
   
   void initialize() {
+    // Seed the Mersenne Twister. Not technically uniform, but closer than a Linear Congruential Generator and optimized for large sets. Starts with a random value from hardware.
+    gen.seed(rd());
+    
     ifstream myFile;
     myFile.open("./InsultsSource.txt");
     string s = "";
@@ -61,8 +64,10 @@ class InsultGenerator {
     
     myFile.close();
     
+    /* This is for the technically faster but much less scalable solution
     // Generate a seed for rand. Only happens once, and is not random. However, by using the current time, the results are at least unique.
-    srand((unsigned int) time(NULL));
+    srand(rd());
+     */
   }
   
   string talkToMe() {
@@ -121,11 +126,20 @@ class InsultGenerator {
 // Gap between public and private members
   
 private:
+  // Random number generator. Fully random, but entropy pool is limited so only being used for seeding.
+  random_device rd;
+  
+  // 19937 state-size Mersenne Twister Engine. Not quite random, but more random than an LCG.
+  mt19937 gen;
+  
+  // Conform the randomly generated output to a uniform distribution. There are 50^3 valid results, for a range of [0,124999].
+  uniform_int_distribution<> distr = uniform_int_distribution<>(0,124999);
+  
   string in1[50];
   string in2[50];
   string in3[50];
   
-  // Ensure results are unique. Pure random algorithm is 20% faster when this method is removed. Semi-random algorithm is 36x faster when this method is removed, demonstrating how much less random it is.
+  // Ensure results are unique. I wish there was a faster way, but I don't think there is
   bool contains(int  *arr, int i, int index) {
     for(int x = 0; x < index; x++) {
       if(*(arr + x) == i) {
@@ -135,22 +149,15 @@ private:
     return false;
   }
   // I need to ask the prof about this. This is 50% faster, but is NOT actually random. It's random-like, but not a thorough solution
+  /*
   int generateRandom() {
     // Return a random value in the possibility range
     return rand()%125000;
-  }
-  /*
-  int generateRandom() {
-    // Get a random value (truly random, from hardware)
-    random_device rd;
-    
-    // Seed the 19937 state-size Mersenne Twister Engine. Not technically uniform, but closer than a Linear Congruential Generator and optimized for large sets. Starts with a random value from hardware.
-    mt19937 gen(rd());
-    
-    // Conform the randomly generated output to a uniform distribution. There are 50^3 valid results, for a range of [0,124999].
-    uniform_int_distribution<> distr(0, 124999);
-    return distr(gen);
   }*/
+  
+  int generateRandom() {
+    return distr(gen);
+  }
 };
 
 #endif /* insultgenerator_19es25_h */
