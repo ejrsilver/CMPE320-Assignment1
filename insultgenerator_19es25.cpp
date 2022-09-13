@@ -127,7 +127,7 @@ void InsultGenerator::initialize() {
   }
   
   // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time. C++'s built-in find function was also slower on average.
-  bool contains(int  *arr, int i, int index) {
+  bool InsultGenerator::contains(int  *arr, int i, int index) {
     for(int x = 0; x < index; x++) {
       if(*(arr + x) == i) {
         return true;
@@ -140,3 +140,7 @@ void InsultGenerator::initialize() {
   int InsultGenerator::generateRandom() {
     return distr(gen);
   }
+
+/*
+ This is an odd result. When testing my program at home, It get speeds around
+ 185ms, with a range of about 10ms. When I ran the same code in class, my performance was around 270ms, with a range of about 20ms. It's possible that startup or other processes limited performance in class, and that running the same test in Stauf after working for a few hours might produce the same results as at home. If anything, home results should be worse since the processor needs to dedicate far more cycles to I/O requests.*/
