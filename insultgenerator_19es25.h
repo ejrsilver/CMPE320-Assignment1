@@ -18,7 +18,6 @@ using namespace std;
 #include <string>
 #include <vector>
 #include <random>
-#include <time.h>
 
 class FileException:public exception {
   public:
@@ -88,9 +87,12 @@ class InsultGenerator {
           x = generateRandom();
         }
         ran[y] = x;
-        int x1 = x%2500;
-        int x2 = x%50;
-        voutput.push_back(in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
+      }
+      sort(ran, ran+num);
+      for(int i = 0; i < num; i++) {
+        int x1 = ran[i]%2500;
+        int x2 = ran[i]%50;
+        voutput.push_back(in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
       }
       return voutput;
     }
@@ -111,10 +113,13 @@ class InsultGenerator {
           x = generateRandom();
         }
         ran[y] = x;
-        int x1 = x%2500;
-        int x2 = x%50;
-        voutput.push_back(in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
-        writeOut << (in1[(x-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]) <<endl;
+      }
+      sort(ran, ran+num);
+      for(int i = 0; i < num; i++) {
+        int x1 = ran[i]%2500;
+        int x2 = ran[i]%50;
+        voutput.push_back(in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
+        writeOut << (in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]) <<endl;
       }
       return voutput;
     }
@@ -139,7 +144,7 @@ private:
   string in2[50];
   string in3[50];
   
-  // Ensure results are unique. I wish there was a faster way, but I don't think there is
+  // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time.
   bool contains(int  *arr, int i, int index) {
     for(int x = 0; x < index; x++) {
       if(*(arr + x) == i) {
@@ -148,13 +153,7 @@ private:
     }
     return false;
   }
-  // I need to ask the prof about this. This is 50% faster, but is NOT actually random. It's random-like, but not a thorough solution
-  /*
-  int generateRandom() {
-    // Return a random value in the possibility range
-    return rand()%125000;
-  }*/
-  
+
   int generateRandom() {
     return distr(gen);
   }
