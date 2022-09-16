@@ -43,9 +43,9 @@ class InsultGenerator {
   vector<string> generate(int num);
   
   vector<string> generateAndSave(string s, int num);
-// Gap between public and private members
+  // Gap between public and private members
   
-private:
+  private:
   // Random number generator. Fully random, but entropy pool is limited so only being used for seeding.
   random_device rd;
   
