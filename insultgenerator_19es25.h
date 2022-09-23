@@ -11,12 +11,9 @@ using namespace std;
 
 #ifndef insultgenerator_19es25_h
 #define insultgenerator_19es25_h
-#include <cstdio>
-#include <iostream>
-#include <fstream>
-#include <stdexcept>
-#include <string>
+
 #include <vector>
+#include <string>
 #include <random>
 
 class FileException:public exception {
