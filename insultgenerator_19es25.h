@@ -37,9 +37,9 @@ class InsultGenerator {
   string talkToMe();
   
 
-  vector<string> generate(int num);
+  vector<string> generate(const int num);
   
-  vector<string> generateAndSave(string s, int num);
+  vector<string> generateAndSave(const string &s, const int num);
   // Gap between public and private members
   
   private:
@@ -57,7 +57,7 @@ class InsultGenerator {
   string in3[50];
   
   // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time. C++'s built-in find function was also slower on average.
-  bool contains(int  *arr, int i, int index);
+  bool contains(const int  * arr, const int i, const int index);
   
   // This random generator is slightly slower on average than the srand and rand functions, but produces a nearly uniform distribution of results. Since the goal is primarily to generate random values, and the performance difference was only ~2ms, the Mersenne won out.
   int generateRandom();
