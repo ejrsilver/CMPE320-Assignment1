@@ -6,7 +6,7 @@
 //
 
 #include <stdio.h>
-#include "insultgenerator_19es25.h"
+#include "insultgenerator_19es25.hpp"
 #include <cstdio>
 #include <iostream>
 #include <fstream>

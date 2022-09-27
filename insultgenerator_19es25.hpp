@@ -1,11 +1,9 @@
 //
-//  insultgenerator_19es25.h
+//  insultgenerator_19es25.hpp
 //  CMPE320-Assignment1
 //
 //  Created by Ethan Silver on 2022-09-09.
 //
-
-/* THIS IS A TEST OF CONVERSION FROM A LOCAL REPO TO A GITHUB REPO*/
 
 using namespace std;
 

@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		056ED64828CB935600A46EA1 /* TestInsultGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestInsultGenerator.cpp; sourceTree = "<group>"; };
-		056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = insultgenerator_19es25.h; sourceTree = "<group>"; };
+		056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = insultgenerator_19es25.hpp; sourceTree = "<group>"; };
 		0591A04C28D0E646006EDF07 /* insultgenerator_19es25.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = insultgenerator_19es25.cpp; sourceTree = "<group>"; };
 		05DC5DD328CA5DBD008667C8 /* InsultsSource.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = InsultsSource.txt; sourceTree = "<group>"; };
 		05F8B93228CA23E100D6D57C /* CMPE320-Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CMPE320-Assignment1"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				0591A04C28D0E646006EDF07 /* insultgenerator_19es25.cpp */,
-				056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.h */,
+				056ED64A28CB93A500A46EA1 /* insultgenerator_19es25.hpp */,
 				05F8B93428CA23E100D6D57C /* CMPE320-Assignment1 */,
 				05F8B93328CA23E100D6D57C /* Products */,
 			);
