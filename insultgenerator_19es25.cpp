@@ -35,6 +35,7 @@ void InsultGenerator::initialize() {
   string s = "";
   
   string delim = "\t";
+  string delim2 = "\r";
   int x = 0;
   if(myFile.is_open()) {
     while(getline(myFile, s)) {
@@ -45,8 +46,9 @@ void InsultGenerator::initialize() {
       in2[x] = s.substr(0, s.find(delim));
       s.erase(0, s.find(delim) + delim.length());
       
-      in3[x] = s.substr(0, s.find(delim));
-      
+      //in3[x] = s.substr(0, s.find(delim));
+      s.erase(s.find(delim2), s.length()-1);
+      in3[x] = s;
       x++;
     }
   }
@@ -92,7 +94,7 @@ void InsultGenerator::initialize() {
       for(int i = 0; i < num; i++) {
         int x1 = ran[i]%2500;
         int x2 = ran[i]%50;
-        voutput.push_back(in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2]);
+        voutput.push_back("Thou " + in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2] + "!");
       }
       return voutput;
     }
@@ -129,7 +131,7 @@ void InsultGenerator::initialize() {
         for(int i = 0; i < num; i++) {
           int x1 = ran[i]%2500;
           int x2 = ran[i]%50;
-          string sout = in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2];
+          string sout = "Thou " + in1[(ran[i]-x1)/2500] + " " + in2[(x1 - x2)/50] + " " + in3[x2] + "!";
           voutput.push_back(sout);
           writeOut << (sout) <<endl;
         }
