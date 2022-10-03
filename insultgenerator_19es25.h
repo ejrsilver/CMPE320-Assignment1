@@ -1,5 +1,5 @@
 //
-//  insultgenerator_19es25.hpp
+//  insultgenerator_19es25.h
 //  CMPE320-Assignment1
 //
 //  Created by Ethan Silver on 2022-09-09.
