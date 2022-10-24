@@ -5,8 +5,6 @@
 //  Created by Ethan Silver on 2022-09-09.
 //
 
-using namespace std;
-
 #ifndef insultgenerator_19es25_h
 #define insultgenerator_19es25_h
 
@@ -14,12 +12,12 @@ using namespace std;
 #include <string>
 #include <random>
 
-class FileException:public exception {
+class FileException:public std::exception {
   public:
   const char * what() const throw();
 };
 
-class NumInsultsOutOfBounds:public exception {
+class NumInsultsOutOfBounds:public std::exception {
   public:
   const char * what() const throw();
 };
@@ -32,27 +30,27 @@ class InsultGenerator {
   void initialize();
   
   // Generate and return a randomly generated insult
-  string talkToMe();
+  std::string talkToMe();
   
 
-  vector<string> generate(const int num);
+  std::vector<std::string> generate(const int num);
   
-  vector<string> generateAndSave(const string &s, const int num);
+  std::vector<std::string> generateAndSave(const std::string &s, const int num);
   // Gap between public and private members
   
   private:
   // Random number generator. Fully random, but entropy pool is limited so only being used for seeding.
-  random_device rd;
+  std::random_device rd;
   
   // 19937 state-size Mersenne Twister Engine. Not quite random, but more random than an LCG.
-  mt19937 gen;
+  std::mt19937 gen;
   
   // Conform the randomly generated output to a uniform distribution. There are 50^3 valid results, for a range of [0,124999].
-  uniform_int_distribution<> distr = uniform_int_distribution<>(0,124999);
+  std::uniform_int_distribution<> distr;
   
-  string in1[50];
-  string in2[50];
-  string in3[50];
+  std::string in1[50];
+  std::string in2[50];
+  std::string in3[50];
   
   // Ensure results are unique. Binary search was ultimately much slower, as the array need to be resorted every time. C++'s built-in find function was also slower on average.
   bool contains(const int  * arr, const int i, const int index);

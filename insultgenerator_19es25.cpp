@@ -15,6 +15,7 @@
 #include <vector>
 #include <random>
 
+using namespace std;
 
 const char * FileException::what() const throw() {
       return "File could not be opened!";
